@@ -1,0 +1,106 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="#!">BOOK STORE DADDY GIẢNG</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+      </ul>
+      <form class="d-flex">
+        <button class="btn btn-outline-dark m-1" type="submit" [routerLink]="['/cart']">
+          <i class="bi-cart-fill me-1"></i>
+          Giỏ Hàng
+          <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+        </button>
+        <button *ngIf="!isSignIn" type="button" class="btn btn-outline-dark m-1" data-toggle="modal" data-target="#staticBackdrop">
+          Đăng Nhập
+        </button>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="isSignIn">
+        <li class="nav-item dropdown">
+          <button type="button" class="btn btn-outline-dark m-1 " data-bs-toggle="dropdown" aria-expanded="false">{{name}}</button>
+          <ul class="dropdown-menu ">
+            <li><a class="dropdown-item" href="#">Chỉnh sửa thông tin</a></li>
+            <li><a class="dropdown-item" href="#">Xem khuyến mãi cá nhân</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item btn" (click)="logOut()">Đăng xuất</a></li>
+          </ul>
+        </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12" id="loginForm">
+            <div class="modal-header p-0 pb-2">
+              <h5 class="modal-title" id="staticBackdropLabel">Login Form</h5>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form class="pt-3" [formGroup]="loginFrom" (ngSubmit)="onSubmit()">
+              <div class="mb-2">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" required="" formControlName="username">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" required="" formControlName="password">
+              </div>
+              <div class="mb-2 form-check">
+                <input type="checkbox" class="form-check-input">
+                <label class="form-check-label">Remember me</label>
+              </div>
+              <button type="submit" class="btn btn-primary w-100 mt-2">Login</button>
+              <div class="col-md-12 pt-3 text-center">
+                <h4>Login with</h4>
+                <button type="submit" class="btn btn-facebook mr-3"><i class="fa fa-facebook "></i></button>
+                <button type="submit" class="btn btn-google"><i class="fa fa-google"></i></button>
+              </div>
+            </form>
+            <div class="text-center pt-2">
+              <a href="#" class="btn text-primary" onclick="signupform()">Signup Now !</a>
+            </div>
+          </div>
+          <!--          <div class="col-md-12" id="signupForm">-->
+          <!--            <div class="modal-header p-0 pb-2">-->
+          <!--              <h5 class="modal-title" id="staticBackdropLabel">Signup Form</h5>-->
+          <!--              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>-->
+          <!--            </div>-->
+          <!--            <form class="pt-3">-->
+          <!--              <div class="mb-2">-->
+          <!--                <label class="form-label">Username</label>-->
+          <!--                <input type="text" class="form-control" required="">-->
+          <!--              </div>-->
+          <!--              <div class="mb-2">-->
+          <!--                <label class="form-label">Password</label>-->
+          <!--                <input type="password" class="form-control" required="">-->
+          <!--              </div>-->
+          <!--              <div class="mb-2">-->
+          <!--                <label class="form-label">Confirm Password</label>-->
+          <!--                <input type="password" class="form-control" required="">-->
+          <!--              </div>-->
+          <!--              <div class="mb-2">-->
+          <!--                <label class="form-label">Email Id</label>-->
+          <!--                <input type="email" class="form-control" required="">-->
+          <!--              </div>-->
+          <!--              <div class="mb-2">-->
+          <!--                <label class="form-label">Mobile Number</label>-->
+          <!--                <input type="number" class="form-control" required="">-->
+          <!--              </div>-->
+          <!--              <div class="mb-2 form-check">-->
+          <!--                <input type="checkbox" class="form-check-input">-->
+          <!--                <label class="form-check-label">Check me out</label>-->
+          <!--              </div>-->
+          <!--              <button type="submit" class="btn btn-primary w-100 mt-2">Register</button>-->
+          <!--            </form>-->
+          <!--            <div class="text-center pt-2">-->
+          <!--              <a href="#" class="btn text-primary" onclick="loginform()">Login Now !</a>-->
+          <!--            </div>-->
+          <!--          </div>-->
